@@ -199,11 +199,30 @@ textarea.input-field { border-radius: var(--radius); resize: vertical; }
 .cart-item__remove:hover { color: var(--red); }
 
 /* Pied du tiroir */
-.cart-drawer__footer { padding: 20px 24px; border-top: 1px solid var(--border); }
+.cart-drawer__footer { padding: 20px 24px; border-top: 1px solid var(--border); max-height: 70vh; overflow-y: auto; }
 .cart-line { display: flex; justify-content: space-between; font-size: .92rem; color: var(--muted); margin-bottom: 10px; }
 .cart-line--total { color: var(--text); font-weight: 700; font-size: 1.05rem; border-top: 1px solid var(--border); padding-top: 12px; margin-top: 4px; }
 .cart-clear { background: none; border: none; color: var(--muted); font-size: .82rem; cursor: pointer; margin-top: 12px; transition: color var(--ease); width: 100%; text-align: center; }
 .cart-clear:hover { color: var(--red); }
+
+/* Formulaire de commande (nom, téléphone, adresse) dans le tiroir panier */
+.order-form { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.order-form__group { display: flex; flex-direction: column; gap: 6px; }
+.order-form__group label { font-size: .8rem; color: var(--muted); }
+.order-form .input-field { padding: 10px 16px; font-size: .88rem; border-radius: 10px; }
+.order-form textarea.input-field { border-radius: 10px; resize: vertical; }
+
+/* Boutons de commande WhatsApp / Email */
+.btn--whatsapp, .btn--email {
+  display: block; width: 100%; text-align: center; margin-top: 12px;
+  padding: 12px 20px; font-size: .9rem; border-radius: 50px;
+  font-family: 'Inter', sans-serif; font-weight: 600; cursor: pointer; border: none;
+  transition: transform var(--ease), box-shadow var(--ease), background var(--ease);
+}
+.btn--whatsapp { background: #25D366; color: #08331c; }
+.btn--whatsapp:hover { background: #2fe377; transform: translateY(-2px); box-shadow: 0 0 25px rgba(37,211,102,.4); }
+.btn--email { background: transparent; color: var(--accent-lt); border: 1px solid var(--accent); }
+.btn--email:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
 
 /* =============================================
    NEWSLETTER
