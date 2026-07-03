@@ -1,75 +1,202 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShopEasy</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NUVŌ — Boutique Premium</title>
+  <!-- Google Fonts : Syne (titres) + Inter (corps) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-    <h2>ShopEasy</h2>
-    <nav>
-        <a href="#">Accueil</a>
-        <a href="#">Produits</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+  <!-- ===== EN-TÊTE ===== -->
+  <header class="header">
+    <div class="container header__inner">
 
-<section class="hero">
-    <h1>Découvrez nos meilleurs produits</h1>
-    <p>Qualité, prix abordables et livraison rapide.</p>
-    <button>Acheter maintenant</button>
-</section>
+      <!-- Logo avec animation underline CSS -->
+      <a href="#" class="logo">NUV<span>Ō</span></a>
 
-<section class="products">
-    <div class="card">
-        <img src="https://via.placeholder.com/180" alt="">
-        <h3>Casque</h3>
-        <p>25 €</p>
-        <button>Ajouter</button>
+      <!-- Navigation principale -->
+      <nav class="nav">
+        <a href="#produits">Produits</a>
+        <a href="#avantages">À propos</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="nav__cta">Panier (0)</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- ===== SECTION HERO ===== -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="hero__eyebrow">Nouvelle collection 2025</p>
+      <h1 class="hero__title">
+        Le style<br />
+        <span class="hero__title--accent">redéfini.</span>
+      </h1>
+      <p class="hero__sub">
+        Des produits soigneusement sélectionnés pour ceux qui refusent
+        l'ordinaire. Qualité, design et durabilité réunis.
+      </p>
+      <a href="#produits" class="btn btn--primary">Acheter maintenant</a>
     </div>
 
-    <div class="card">
-        <img src="https://via.placeholder.com/180" alt="">
-        <h3>Montre</h3>
-        <p>40 €</p>
-        <button>Ajouter</button>
+    <!-- Décoration de fond : cercle flou violet -->
+    <div class="hero__glow" aria-hidden="true"></div>
+  </section>
+
+  <!-- ===== SECTION PRODUITS ===== -->
+  <section class="products" id="produits">
+    <div class="container">
+      <h2 class="section__title">Nos <span>produits</span></h2>
+      <p class="section__sub">Une sélection exclusive, pensée pour vous.</p>
+
+      <!-- Grille de 6 cartes produits -->
+      <div class="products__grid">
+
+        <!-- Carte 1 -->
+        <article class="card">
+          <div class="card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Montre minimaliste" class="card__img" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__name">Montre Aura</h3>
+            <p class="card__price">149 000 Ar</p>
+            <button class="btn btn--card">Ajouter au panier</button>
+          </div>
+        </article>
+
+        <!-- Carte 2 -->
+        <article class="card">
+          <div class="card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Casque audio" class="card__img" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__name">Casque Nova Pro</h3>
+            <p class="card__price">289 000 Ar</p>
+            <button class="btn btn--card">Ajouter au panier</button>
+          </div>
+        </article>
+
+        <!-- Carte 3 -->
+        <article class="card">
+          <div class="card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&q=80" alt="Chaussures running" class="card__img" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__name">Sneakers Flux</h3>
+            <p class="card__price">210 000 Ar</p>
+            <button class="btn btn--card">Ajouter au panier</button>
+          </div>
+        </article>
+
+        <!-- Carte 4 -->
+        <article class="card">
+          <div class="card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&q=80" alt="Appareil photo" class="card__img" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__name">Caméra Lumix S</h3>
+            <p class="card__price">620 000 Ar</p>
+            <button class="btn btn--card">Ajouter au panier</button>
+          </div>
+        </article>
+
+        <!-- Carte 5 -->
+        <article class="card">
+          <div class="card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Sac à dos" class="card__img" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__name">Sac Urban Pack</h3>
+            <p class="card__price">185 000 Ar</p>
+            <button class="btn btn--card">Ajouter au panier</button>
+          </div>
+        </article>
+
+        <!-- Carte 6 -->
+        <article class="card">
+          <div class="card__img-wrap">
+            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" alt="Parfum" class="card__img" />
+          </div>
+          <div class="card__body">
+            <h3 class="card__name">Parfum Elixir N°7</h3>
+            <p class="card__price">98 000 Ar</p>
+            <button class="btn btn--card">Ajouter au panier</button>
+          </div>
+        </article>
+
+      </div><!-- /products__grid -->
+    </div>
+  </section>
+
+  <!-- ===== SECTION AVANTAGES ===== -->
+  <section class="features" id="avantages">
+    <div class="container">
+      <h2 class="section__title">Pourquoi nous <span>choisir ?</span></h2>
+
+      <div class="features__grid">
+
+        <!-- Avantage 1 -->
+        <div class="feature">
+          <div class="feature__icon">✦</div>
+          <h3>Qualité garantie</h3>
+          <p>Chaque produit est contrôlé et certifié avant d'être mis en vente. Zéro compromis sur les matériaux.</p>
+        </div>
+
+        <!-- Avantage 2 -->
+        <div class="feature">
+          <div class="feature__icon">⟳</div>
+          <h3>Retour facile</h3>
+          <p>Pas satisfait ? Retournez votre commande sous 30 jours, sans question ni frais supplémentaires.</p>
+        </div>
+
+        <!-- Avantage 3 -->
+        <div class="feature">
+          <div class="feature__icon">◈</div>
+          <h3>Livraison rapide</h3>
+          <p>Expédition sous 24h partout à Madagascar. Suivi en temps réel de votre colis inclus.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PIED DE PAGE ===== -->
+  <footer class="footer" id="contact">
+    <div class="container footer__inner">
+
+      <!-- Infos de contact -->
+      <div class="footer__col">
+        <span class="logo">NUV<span>Ō</span></span>
+        <p>Antananarivo, Madagascar<br />contact@nuvo.mg<br />+261 34 00 000 00</p>
+      </div>
+
+      <!-- Liens rapides -->
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <a href="#produits">Produits</a>
+        <a href="#avantages">À propos</a>
+        <a href="#">FAQ</a>
+        <a href="#">Politique de retour</a>
+      </div>
+
+      <!-- Réseaux sociaux -->
+      <div class="footer__col">
+        <h4>Nous suivre</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
+        <a href="#">WhatsApp</a>
+      </div>
+
     </div>
 
-    <div class="card">
-        <img src="https://via.placeholder.com/180" alt="">
-        <h3>Sac</h3>
-        <p>35 €</p>
-        <button>Ajouter</button>
-    </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/180" alt="">
-        <h3>Chaussures</h3>
-        <p>55 €</p>
-        <button>Ajouter</button>
-    </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/180" alt="">
-        <h3>T-shirt</h3>
-        <p>18 €</p>
-        <button>Ajouter</button>
-    </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/180" alt="">
-        <h3>Lunettes</h3>
-        <p>30 €</p>
-        <button>Ajouter</button>
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 ShopEasy - Tous droits réservés.</p>
-</footer>
+    <p class="footer__copy">© 2025 NUVŌ. Tous droits réservés.</p>
+  </footer>
 
 </body>
 </html>
