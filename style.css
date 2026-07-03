@@ -22,7 +22,12 @@
   --ease:      0.3s ease;
 }
 
-html { scroll-behavior: smooth; }
+/* FIX BUG "produit qui devient grand" :
+   scrollbar-gutter réserve toujours la place de la scrollbar,
+   ainsi la page ne "saute" plus quand on bloque le scroll
+   (ouverture du panier). Complété par un fix JS ci-dessous. */
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 img  { display: block; width: 100%; }
 a    { text-decoration: none; color: inherit; }
@@ -124,7 +129,9 @@ textarea.input-field { border-radius: var(--radius); resize: vertical; }
 .card { background: var(--bg-card); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease); }
 .card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 8px 40px rgba(124,92,252,.2); }
 .card__img-wrap { overflow: hidden; height: 200px; position: relative; }
-.card__img { height: 100%; object-fit: cover; transition: transform .5s ease; }
+/* FIX: largeur explicite en plus de la hauteur, pour que l'image
+   reste toujours cadrée à la taille du conteneur, jamais "géante" */
+.card__img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
 .card:hover .card__img { transform: scale(1.06); }
 .card__badge { position: absolute; top: 12px; left: 12px; background: var(--accent); color: #fff; font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: 50px; }
 .card__body { padding: 20px; }
@@ -145,7 +152,7 @@ textarea.input-field { border-radius: var(--radius); resize: vertical; }
 .feature p { color: var(--muted); font-size: .93rem; }
 
 /* =============================================
-   PANIER — TIROIR LATÉRAL
+   PANIER — TIROIR LATÉRAL (le "menu" pour voir les produits ajoutés)
 ============================================= */
 /* Overlay sombre */
 .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 300; opacity: 0; pointer-events: none; transition: opacity var(--ease); }
@@ -175,8 +182,13 @@ textarea.input-field { border-radius: var(--radius); resize: vertical; }
 /* Article dans le tiroir */
 .cart-item { display: flex; gap: 14px; align-items: flex-start; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; transition: border-color var(--ease); }
 .cart-item:hover { border-color: var(--accent); }
-.cart-item img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; flex-shrink: 0; }
-.cart-item__info { flex: 1; }
+/* FIX: taille de la miniature verrouillée (width + max-width + flex: 0 0 ...)
+   pour qu'elle ne puisse jamais "grandir" quel que soit le contenu du flex */
+.cart-item img {
+  width: 64px; height: 64px; max-width: 64px; max-height: 64px;
+  object-fit: cover; border-radius: 8px; flex: 0 0 64px;
+}
+.cart-item__info { flex: 1; min-width: 0; }
 .cart-item__name { font-weight: 600; font-size: .9rem; margin-bottom: 4px; }
 .cart-item__price { color: var(--accent-lt); font-size: .88rem; margin-bottom: 8px; }
 .cart-item__qty { display: flex; align-items: center; gap: 10px; }
