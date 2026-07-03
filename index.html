@@ -312,9 +312,29 @@
     <div class="cart-drawer__footer">
       <div class="cart-line"><span>Sous-total</span><span id="cart-subtotal">0 Ar</span></div>
       <div class="cart-line cart-line--total"><span>Total</span><span id="cart-total">0 Ar</span></div>
-      <a href="#contact" class="btn btn--primary" style="display:block;text-align:center;margin-top:16px" onclick="fermerPanier()">
-        Passer la commande
-      </a>
+
+      <!-- Formulaire de commande : coordonnées + adresse de livraison -->
+      <div class="order-form">
+        <div class="order-form__group">
+          <label for="order-nom">Nom complet</label>
+          <input type="text" id="order-nom" class="input-field" placeholder="Votre nom" />
+        </div>
+        <div class="order-form__group">
+          <label for="order-tel">Téléphone</label>
+          <input type="tel" id="order-tel" class="input-field" placeholder="Ex : 034 12 345 67" />
+        </div>
+        <div class="order-form__group">
+          <label for="order-adresse">Adresse de livraison</label>
+          <textarea id="order-adresse" class="input-field" rows="2" placeholder="Quartier, rue, ville..."></textarea>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn--whatsapp" onclick="commanderWhatsApp()">
+        📱 Commander via WhatsApp
+      </button>
+      <button type="button" class="btn btn--email" onclick="commanderEmail()">
+        ✉️ Commander par Email
+      </button>
       <button class="cart-clear" onclick="viderPanier()">🗑 Vider le panier</button>
     </div>
   </aside>
@@ -505,6 +525,61 @@
     // ── Formater le prix en Ar ──
     function formaterPrix(n) {
       return n.toLocaleString('fr-FR') + ' Ar';
+    }
+
+    // ── Coordonnées du vendeur (à adapter si besoin) ──
+    const VENDEUR_WHATSAPP = '261389791195'; // 038 979 11 95 au format international sans le 0
+    const VENDEUR_EMAIL    = 'tsikynambs@gmail.com';
+
+    // ── Vérifie que le panier + le formulaire sont remplis, renvoie les infos ou null ──
+    function validerCommande() {
+      if (panier.length === 0) {
+        alert('Votre panier est vide. Ajoutez au moins un produit avant de commander.');
+        return null;
+      }
+      const nom      = document.getElementById('order-nom').value.trim();
+      const tel      = document.getElementById('order-tel').value.trim();
+      const adresse  = document.getElementById('order-adresse').value.trim();
+
+      if (!nom || !tel || !adresse) {
+        alert('Merci de renseigner votre nom, votre téléphone et votre adresse de livraison avant de valider la commande.');
+        return null;
+      }
+      return { nom, tel, adresse };
+    }
+
+    // ── Construit le texte récapitulatif de la commande ──
+    function construireRecapitulatif(client) {
+      const sousTotal = panier.reduce((s, p) => s + p.prix * p.qty, 0);
+      let texte = `Nouvelle commande — NUVŌ\n\n`;
+      texte += `Client : ${client.nom}\n`;
+      texte += `Téléphone : ${client.tel}\n`;
+      texte += `Adresse de livraison : ${client.adresse}\n\n`;
+      texte += `Produits :\n`;
+      panier.forEach(p => {
+        texte += `- ${p.nom} x${p.qty} = ${formaterPrix(p.prix * p.qty)}\n`;
+      });
+      texte += `\nTotal : ${formaterPrix(sousTotal)}`;
+      return texte;
+    }
+
+    // ── Envoyer la commande via WhatsApp ──
+    function commanderWhatsApp() {
+      const client = validerCommande();
+      if (!client) return;
+      const texte = construireRecapitulatif(client);
+      const url = `https://wa.me/${VENDEUR_WHATSAPP}?text=${encodeURIComponent(texte)}`;
+      window.open(url, '_blank');
+    }
+
+    // ── Envoyer la commande par Email ──
+    function commanderEmail() {
+      const client = validerCommande();
+      if (!client) return;
+      const texte = construireRecapitulatif(client);
+      const sujet = `Nouvelle commande de ${client.nom}`;
+      const url = `mailto:${VENDEUR_EMAIL}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(texte)}`;
+      window.location.href = url;
     }
 
     // ── Ouvrir / fermer le tiroir ──
