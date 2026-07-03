@@ -33,7 +33,7 @@
         <a href="#produits">Produits</a>
         <a href="#avantages">À propos</a>
         <a href="#contact">Contact</a>
-        <!-- Bouton panier : le badge JS met à jour le compteur -->
+        <!-- Bouton panier : c'est le "menu" pour voir les produits déjà ajoutés -->
         <button class="nav__cta" id="btn-open-cart" onclick="ouvrirPanier()">
           🛒 Panier (<span id="cart-count">0</span>)
         </button>
@@ -508,15 +508,24 @@
     }
 
     // ── Ouvrir / fermer le tiroir ──
+    // FIX BUG "produit qui devient grand" : quand on bloque le scroll du
+    // body (overflow:hidden), la barre de défilement du navigateur
+    // disparaît et toute la page se recalcule un peu plus large →
+    // effet visuel de "grossissement" des cartes/images.
+    // On compense en ajoutant un padding-right égal à la largeur de la
+    // scrollbar, retiré à la fermeture.
     function ouvrirPanier() {
+      const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.paddingRight = scrollBarWidth + 'px';
+      document.body.style.overflow = 'hidden';
       document.getElementById('cart-drawer').classList.add('open');
       document.getElementById('cart-overlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
     }
     function fermerPanier() {
       document.getElementById('cart-drawer').classList.remove('open');
       document.getElementById('cart-overlay').classList.remove('open');
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
     // Fermer avec la touche Échap
     document.addEventListener('keydown', e => { if (e.key === 'Escape') fermerPanier(); });
