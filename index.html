@@ -3,34 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NUVŌ — Boutique Premium</title>
-  <!-- Google Fonts : Syne (titres) + Inter (corps) -->
+  <title>tSIKY Fanantenana — Boutique Premium</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+  <!-- ===== BANNIÈRE PROMO ANIMÉE (CSS ticker) ===== -->
+  <div class="promo-bar">
+    <div class="promo-bar__track">
+      <span>🎉 -20% sur toute la collection avec le code <strong>NUVO20</strong></span>
+      <span>🚚 Livraison gratuite à partir de 150 000 Ar</span>
+      <span>⭐ Retour gratuit sous 30 jours</span>
+      <span>🎉 -20% sur toute la collection avec le code <strong>NUVO20</strong></span>
+      <span>🚚 Livraison gratuite à partir de 150 000 Ar</span>
+      <span>⭐ Retour gratuit sous 30 jours</span>
+    </div>
+  </div>
+
   <!-- ===== EN-TÊTE ===== -->
   <header class="header">
     <div class="container header__inner">
-
-      <!-- Logo avec animation underline CSS -->
-      <a href="#" class="logo">NUV<span>Ō</span></a>
-
-      <!-- Navigation principale -->
+      <a href="#accueil" class="logo">NUV<span>Ō</span></a>
       <nav class="nav">
+        <a href="#accueil">Accueil</a>
         <a href="#produits">Produits</a>
         <a href="#avantages">À propos</a>
         <a href="#contact">Contact</a>
-        <a href="#" class="nav__cta">Panier (0)</a>
+        <a href="#panier" class="nav__cta">🛒 Panier (3)</a>
       </nav>
-
     </div>
   </header>
 
-  <!-- ===== SECTION HERO ===== -->
-  <section class="hero">
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="accueil">
     <div class="container hero__inner">
       <p class="hero__eyebrow">Nouvelle collection 2025</p>
       <h1 class="hero__title">
@@ -43,93 +50,228 @@
       </p>
       <a href="#produits" class="btn btn--primary">Acheter maintenant</a>
     </div>
-
-    <!-- Décoration de fond : cercle flou violet -->
     <div class="hero__glow" aria-hidden="true"></div>
   </section>
 
-  <!-- ===== SECTION PRODUITS ===== -->
+  <!-- ===== SECTION PRODUITS + FILTRES CSS ===== -->
   <section class="products" id="produits">
     <div class="container">
       <h2 class="section__title">Nos <span>produits</span></h2>
       <p class="section__sub">Une sélection exclusive, pensée pour vous.</p>
 
-      <!-- Grille de 6 cartes produits -->
-      <div class="products__grid">
+      <!-- Filtres : radio inputs cachés + labels cliquables -->
+      <div class="filters">
+        <input type="radio" name="filtre" id="f-tous"       class="filter-input" checked />
+        <input type="radio" name="filtre" id="f-tech"       class="filter-input" />
+        <input type="radio" name="filtre" id="f-mode"       class="filter-input" />
+        <input type="radio" name="filtre" id="f-lifestyle"  class="filter-input" />
 
-        <!-- Carte 1 -->
-        <article class="card">
-          <div class="card__img-wrap">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Montre minimaliste" class="card__img" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__name">Montre Aura</h3>
-            <p class="card__price">149 000 Ar</p>
-            <button class="btn btn--card">Ajouter au panier</button>
-          </div>
-        </article>
+        <div class="filters__labels">
+          <label for="f-tous">      Tous</label>
+          <label for="f-tech">      Tech</label>
+          <label for="f-mode">      Mode</label>
+          <label for="f-lifestyle"> Lifestyle</label>
+        </div>
 
-        <!-- Carte 2 -->
-        <article class="card">
-          <div class="card__img-wrap">
-            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Casque audio" class="card__img" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__name">Casque Nova Pro</h3>
-            <p class="card__price">289 000 Ar</p>
-            <button class="btn btn--card">Ajouter au panier</button>
-          </div>
-        </article>
+        <!-- Grille : les cartes sont affichées/masquées selon le filtre actif -->
+        <div class="products__grid">
 
-        <!-- Carte 3 -->
-        <article class="card">
-          <div class="card__img-wrap">
-            <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&q=80" alt="Chaussures running" class="card__img" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__name">Sneakers Flux</h3>
-            <p class="card__price">210 000 Ar</p>
-            <button class="btn btn--card">Ajouter au panier</button>
-          </div>
-        </article>
+          <!-- Carte 1 — Tech -->
+          <article class="card card--tech card--mode">
+            <a href="#detail-montre" class="card__link">
+              <div class="card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Montre Aura" class="card__img" />
+                <span class="card__badge">-20%</span>
+              </div>
+              <div class="card__body">
+                <h3 class="card__name">Montre Aura</h3>
+                <div class="card__prices">
+                  <p class="card__price">119 200 Ar</p>
+                  <p class="card__price--old">149 000 Ar</p>
+                </div>
+                <span class="btn btn--card">Voir le produit</span>
+              </div>
+            </a>
+          </article>
 
-        <!-- Carte 4 -->
-        <article class="card">
-          <div class="card__img-wrap">
-            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&q=80" alt="Appareil photo" class="card__img" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__name">Caméra Lumix S</h3>
-            <p class="card__price">620 000 Ar</p>
-            <button class="btn btn--card">Ajouter au panier</button>
-          </div>
-        </article>
+          <!-- Carte 2 — Tech -->
+          <article class="card card--tech">
+            <a href="#detail-casque" class="card__link">
+              <div class="card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Casque Nova Pro" class="card__img" />
+              </div>
+              <div class="card__body">
+                <h3 class="card__name">Casque Nova Pro</h3>
+                <div class="card__prices">
+                  <p class="card__price">289 000 Ar</p>
+                </div>
+                <span class="btn btn--card">Voir le produit</span>
+              </div>
+            </a>
+          </article>
 
-        <!-- Carte 5 -->
-        <article class="card">
-          <div class="card__img-wrap">
-            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Sac à dos" class="card__img" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__name">Sac Urban Pack</h3>
-            <p class="card__price">185 000 Ar</p>
-            <button class="btn btn--card">Ajouter au panier</button>
-          </div>
-        </article>
+          <!-- Carte 3 — Mode -->
+          <article class="card card--mode">
+            <a href="#" class="card__link">
+              <div class="card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&q=80" alt="Sneakers Flux" class="card__img" />
+                <span class="card__badge">Nouveau</span>
+              </div>
+              <div class="card__body">
+                <h3 class="card__name">Sneakers Flux</h3>
+                <div class="card__prices">
+                  <p class="card__price">210 000 Ar</p>
+                </div>
+                <span class="btn btn--card">Voir le produit</span>
+              </div>
+            </a>
+          </article>
 
-        <!-- Carte 6 -->
-        <article class="card">
-          <div class="card__img-wrap">
-            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" alt="Parfum" class="card__img" />
-          </div>
-          <div class="card__body">
-            <h3 class="card__name">Parfum Elixir N°7</h3>
-            <p class="card__price">98 000 Ar</p>
-            <button class="btn btn--card">Ajouter au panier</button>
-          </div>
-        </article>
+          <!-- Carte 4 — Tech -->
+          <article class="card card--tech">
+            <a href="#" class="card__link">
+              <div class="card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&q=80" alt="Caméra Lumix S" class="card__img" />
+              </div>
+              <div class="card__body">
+                <h3 class="card__name">Caméra Lumix S</h3>
+                <div class="card__prices">
+                  <p class="card__price">620 000 Ar</p>
+                </div>
+                <span class="btn btn--card">Voir le produit</span>
+              </div>
+            </a>
+          </article>
 
-      </div><!-- /products__grid -->
+          <!-- Carte 5 — Mode -->
+          <article class="card card--mode">
+            <a href="#" class="card__link">
+              <div class="card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Sac Urban Pack" class="card__img" />
+              </div>
+              <div class="card__body">
+                <h3 class="card__name">Sac Urban Pack</h3>
+                <div class="card__prices">
+                  <p class="card__price">185 000 Ar</p>
+                </div>
+                <span class="btn btn--card">Voir le produit</span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Carte 6 — Lifestyle -->
+          <article class="card card--lifestyle">
+            <a href="#" class="card__link">
+              <div class="card__img-wrap">
+                <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&q=80" alt="Parfum Elixir" class="card__img" />
+              </div>
+              <div class="card__body">
+                <h3 class="card__name">Parfum Élixir N°7</h3>
+                <div class="card__prices">
+                  <p class="card__price">98 000 Ar</p>
+                </div>
+                <span class="btn btn--card">Voir le produit</span>
+              </div>
+            </a>
+          </article>
+
+        </div><!-- /products__grid -->
+      </div><!-- /filters -->
+    </div>
+  </section>
+
+  <!-- ===== PAGE DÉTAIL PRODUIT (section :target) ===== -->
+  <section class="detail" id="detail-montre">
+    <div class="container detail__inner">
+      <a href="#produits" class="detail__back">← Retour aux produits</a>
+      <div class="detail__layout">
+
+        <!-- Galerie d'images avec miniatures CSS -->
+        <div class="gallery">
+          <!-- Trick CSS : radio buttons pour changer l'image principale -->
+          <input type="radio" name="gal" id="g1" class="gal-input" checked />
+          <input type="radio" name="gal" id="g2" class="gal-input" />
+          <input type="radio" name="gal" id="g3" class="gal-input" />
+
+          <div class="gallery__main">
+            <img class="gal-img gal-img--1" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=700&q=85" alt="Montre Aura vue 1" />
+            <img class="gal-img gal-img--2" src="https://images.unsplash.com/photo-1548171915-f75ba99c2e38?w=700&q=85" alt="Montre Aura vue 2" />
+            <img class="gal-img gal-img--3" src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=700&q=85" alt="Montre Aura vue 3" />
+          </div>
+
+          <div class="gallery__thumbs">
+            <label for="g1"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=120&q=70" alt="Vue 1" /></label>
+            <label for="g2"><img src="https://images.unsplash.com/photo-1548171915-f75ba99c2e38?w=120&q=70" alt="Vue 2" /></label>
+            <label for="g3"><img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=120&q=70" alt="Vue 3" /></label>
+          </div>
+        </div>
+
+        <!-- Infos produit -->
+        <div class="detail__info">
+          <p class="hero__eyebrow">Collection Tech</p>
+          <h2 class="detail__name">Montre Aura</h2>
+          <div class="detail__rating">★★★★★ <span>(124 avis)</span></div>
+          <div class="detail__prices">
+            <p class="detail__price">119 200 Ar</p>
+            <p class="detail__price--old">149 000 Ar</p>
+            <span class="detail__promo">-20%</span>
+          </div>
+          <p class="detail__desc">
+            Montre minimaliste en acier inoxydable avec cadran saphir antireflet.
+            Étanche à 50m, bracelet cuir véritable. Mouvement automatique japonais.
+            Garantie 2 ans incluse.
+          </p>
+          <!-- Choix couleur via CSS -->
+          <div class="detail__colors">
+            <span class="detail__label">Couleur :</span>
+            <input type="radio" name="color" id="c-noir" checked class="color-input" />
+            <label for="c-noir" class="color-swatch" style="background:#1a1a2e" title="Noir minuit"></label>
+            <input type="radio" name="color" id="c-or" class="color-input" />
+            <label for="c-or" class="color-swatch" style="background:#c8a96e" title="Or champagne"></label>
+            <input type="radio" name="color" id="c-argent" class="color-input" />
+            <label for="c-argent" class="color-swatch" style="background:#c0c0c0" title="Argent"></label>
+          </div>
+          <a href="#panier" class="btn btn--primary detail__cta">Ajouter au panier</a>
+          <p class="detail__stock">✅ En stock — Expédition sous 24h</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Détail Casque -->
+  <section class="detail" id="detail-casque">
+    <div class="container detail__inner">
+      <a href="#produits" class="detail__back">← Retour aux produits</a>
+      <div class="detail__layout">
+        <div class="gallery">
+          <input type="radio" name="gal2" id="g2-1" class="gal-input" checked />
+          <input type="radio" name="gal2" id="g2-2" class="gal-input" />
+          <div class="gallery__main">
+            <img class="gal-img gal-img--1" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=700&q=85" alt="Casque vue 1" />
+            <img class="gal-img gal-img--2" src="https://images.unsplash.com/photo-1599669454699-248893623440?w=700&q=85" alt="Casque vue 2" />
+          </div>
+          <div class="gallery__thumbs">
+            <label for="g2-1"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=120&q=70" alt="Vue 1" /></label>
+            <label for="g2-2"><img src="https://images.unsplash.com/photo-1599669454699-248893623440?w=120&q=70" alt="Vue 2" /></label>
+          </div>
+        </div>
+        <div class="detail__info">
+          <p class="hero__eyebrow">Collection Tech</p>
+          <h2 class="detail__name">Casque Nova Pro</h2>
+          <div class="detail__rating">★★★★☆ <span>(87 avis)</span></div>
+          <div class="detail__prices">
+            <p class="detail__price">289 000 Ar</p>
+          </div>
+          <p class="detail__desc">
+            Casque audio sans fil avec réduction de bruit active. Autonomie 40h,
+            charge rapide USB-C, son Hi-Res Audio certifié. Arceau en aluminium
+            brossé, coussinets mémoire de forme.
+          </p>
+          <a href="#panier" class="btn btn--primary detail__cta">Ajouter au panier</a>
+          <p class="detail__stock">✅ En stock — Expédition sous 24h</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -137,28 +279,170 @@
   <section class="features" id="avantages">
     <div class="container">
       <h2 class="section__title">Pourquoi nous <span>choisir ?</span></h2>
-
       <div class="features__grid">
-
-        <!-- Avantage 1 -->
         <div class="feature">
           <div class="feature__icon">✦</div>
           <h3>Qualité garantie</h3>
           <p>Chaque produit est contrôlé et certifié avant d'être mis en vente. Zéro compromis sur les matériaux.</p>
         </div>
-
-        <!-- Avantage 2 -->
         <div class="feature">
           <div class="feature__icon">⟳</div>
           <h3>Retour facile</h3>
           <p>Pas satisfait ? Retournez votre commande sous 30 jours, sans question ni frais supplémentaires.</p>
         </div>
-
-        <!-- Avantage 3 -->
         <div class="feature">
           <div class="feature__icon">◈</div>
           <h3>Livraison rapide</h3>
           <p>Expédition sous 24h partout à Madagascar. Suivi en temps réel de votre colis inclus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PANIER (section :target) ===== -->
+  <section class="panier-page" id="panier">
+    <div class="container">
+      <h2 class="section__title">Mon <span>panier</span></h2>
+      <div class="panier__layout">
+
+        <!-- Articles -->
+        <div class="panier__items">
+          <div class="panier__item">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=100&q=70" alt="Montre Aura" />
+            <div class="panier__item-info">
+              <h4>Montre Aura</h4>
+              <p class="panier__item-sub">Couleur : Noir minuit</p>
+              <p class="panier__item-price">119 200 Ar</p>
+            </div>
+            <div class="panier__qty">
+              <span class="qty-box">1</span>
+            </div>
+          </div>
+
+          <div class="panier__item">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=70" alt="Casque Nova Pro" />
+            <div class="panier__item-info">
+              <h4>Casque Nova Pro</h4>
+              <p class="panier__item-sub">Couleur : Noir</p>
+              <p class="panier__item-price">289 000 Ar</p>
+            </div>
+            <div class="panier__qty">
+              <span class="qty-box">1</span>
+            </div>
+          </div>
+
+          <div class="panier__item">
+            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=100&q=70" alt="Sac Urban Pack" />
+            <div class="panier__item-info">
+              <h4>Sac Urban Pack</h4>
+              <p class="panier__item-sub">Couleur : Gris</p>
+              <p class="panier__item-price">185 000 Ar</p>
+            </div>
+            <div class="panier__qty">
+              <span class="qty-box">1</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Récapitulatif -->
+        <div class="panier__summary">
+          <h3>Récapitulatif</h3>
+          <div class="panier__line"><span>Sous-total</span><span>593 200 Ar</span></div>
+          <div class="panier__line"><span>Livraison</span><span class="panier__free">Gratuite</span></div>
+          <div class="panier__line panier__line--promo"><span>Code NUVO20</span><span>-118 640 Ar</span></div>
+          <div class="panier__line panier__line--total"><span>Total</span><span>474 560 Ar</span></div>
+
+          <!-- Champ code promo -->
+          <div class="panier__promo-field">
+            <input type="text" placeholder="Code promo" class="input-field" />
+            <button class="btn btn--card" style="width:auto;padding:10px 18px">Appliquer</button>
+          </div>
+
+          <a href="#contact" class="btn btn--primary" style="width:100%;text-align:center;display:block;margin-top:20px">
+            Passer la commande
+          </a>
+          <a href="#produits" class="panier__continue">← Continuer mes achats</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter">
+    <div class="container newsletter__inner">
+      <div class="newsletter__text">
+        <h2>Restez dans la <span>tendance</span></h2>
+        <p>Inscrivez-vous et recevez nos offres exclusives en avant-première.</p>
+      </div>
+      <form class="newsletter__form" action="#" method="get">
+        <input type="email" name="email" placeholder="votre@email.com" class="input-field" required />
+        <button type="submit" class="btn btn--primary">S'inscrire</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="section__title">Nous <span>contacter</span></h2>
+      <p class="section__sub">Une question ? On vous répond sous 24h.</p>
+
+      <div class="contact__layout">
+
+        <!-- Formulaire -->
+        <form class="contact__form" action="#" method="get">
+          <div class="form__row">
+            <div class="form__group">
+              <label for="nom">Nom complet</label>
+              <input type="text" id="nom" name="nom" placeholder="Ex : Tsiky Rakoto" class="input-field" required />
+            </div>
+            <div class="form__group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="votre@email.com" class="input-field" required />
+            </div>
+          </div>
+          <div class="form__group">
+            <label for="sujet">Sujet</label>
+            <input type="text" id="sujet" name="sujet" placeholder="Ex : Demande de remboursement" class="input-field" required />
+          </div>
+          <div class="form__group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Décrivez votre demande ici..." class="input-field" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary">Envoyer le message</button>
+        </form>
+
+        <!-- Infos de contact -->
+        <div class="contact__infos">
+          <div class="contact__info-item">
+            <span class="contact__icon">📍</span>
+            <div>
+              <h4>Adresse</h4>
+              <p>Rue d'Andrainjato 18, Fianarantsoa 301, Madagascar</p>
+            </div>
+          </div>
+          <div class="contact__info-item">
+            <span class="contact__icon">📞</span>
+            <div>
+              <h4>Téléphone</h4>
+              <p>+261 38 97 911 95</p>
+            </div>
+          </div>
+          <div class="contact__info-item">
+            <span class="contact__icon">✉️</span>
+            <div>
+              <h4>Email</h4>
+              <p>contactsikynambs.mg</p>
+            </div>
+          </div>
+          <div class="contact__info-item">
+            <span class="contact__icon">🕐</span>
+            <div>
+              <h4>Horaires</h4>
+              <p>Lun – Sam : 8h00 – 18h00</p>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -166,25 +450,26 @@
   </section>
 
   <!-- ===== PIED DE PAGE ===== -->
-  <footer class="footer" id="contact">
+  <footer class="footer">
     <div class="container footer__inner">
-
-      <!-- Infos de contact -->
       <div class="footer__col">
-        <span class="logo">NUV<span>Ō</span></span>
-        <p>Antananarivo, Madagascar<br />contact@nuvo.mg<br />+261 34 00 000 00</p>
+        <span class="logo">NTF<span>Ō</span></span>
+        <p>Antananarivo, Madagascar<br />contactsikynambs.mg<br />+261 38 97 911 95</p>
       </div>
-
-      <!-- Liens rapides -->
       <div class="footer__col">
         <h4>Navigation</h4>
+        <a href="#accueil">Accueil</a>
         <a href="#produits">Produits</a>
-        <a href="#avantages">À propos</a>
+        <a href="#panier">Panier</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Informations</h4>
         <a href="#">FAQ</a>
         <a href="#">Politique de retour</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
       </div>
-
-      <!-- Réseaux sociaux -->
       <div class="footer__col">
         <h4>Nous suivre</h4>
         <a href="#">Instagram</a>
@@ -192,10 +477,8 @@
         <a href="#">TikTok</a>
         <a href="#">WhatsApp</a>
       </div>
-
     </div>
-
-    <p class="footer__copy">© 2025 NUVŌ. Tous droits réservés.</p>
+    <p class="footer__copy">© 2025 Tsiky Fanatenana. Tous droits réservés.</p>
   </footer>
 
 </body>
